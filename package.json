@@ -1,5 +1,5 @@
 {
-  "name": "strapi",
+  "name": "livestream-backend",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -9,22 +9,23 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
   "dependencies": {
-    "@strapi/plugin-i18n": "4.12.1",
-    "@strapi/plugin-users-permissions": "4.12.1",
-    "@strapi/provider-upload-cloudinary": "4.12.1",
-    "@strapi/strapi": "4.12.1",
-    "pg": "8.11.2"
+    "@strapi/plugin-i18n": "4.11.7",
+    "@strapi/plugin-users-permissions": "4.11.7",
+    "@strapi/provider-email-nodemailer": "^4.11.7",
+    "@strapi/strapi": "4.11.7",
+    "bcrypt": "^5.1.0",
+    "cloudinary": "^1.39.0",
+    "pg": "8.8.0"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "35d7a084-3088-4d0b-869e-f503693ee8e5"
+    "uuid": "cb9b4cf9-9a68-4e8e-af57-2bfff7fd5a8f"
   },
   "engines": {
-    "node": ">=16.x.x",
+    "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"
