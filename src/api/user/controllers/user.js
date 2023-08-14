@@ -82,7 +82,7 @@ module.exports = {
       const templatePath = path.resolve(__dirname, '../emailTemplates/welcome.html');
       const templateContent = fs.readFileSync(templatePath, 'utf8');
 
-      const correoHTML = templateContent.replace('{{fullname}}', username+' '+surname);
+      const correoHTML = templateContent.replace('{{fullname}}', name+' '+surname);
 
       await transport.sendMail({
         from:'livestreamfront@gmail.com',
