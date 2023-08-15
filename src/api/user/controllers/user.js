@@ -60,15 +60,19 @@ module.exports = {
 
     let { username, email, password,confirmed,blocked,logged,role,gpid,surname } = ctx.request.body;
 
+    // Enviar el correo electrónico con el ID del usuario
+
     const name = username;
 
     const randomNumber = Math.round(Math.random()*5000);
 
     username = name+surname+randomNumber;
-    
+
+
     try {
       const user = await strapi.plugins['users-permissions'].services.user.add({
         username,
+        name,
         surname,
         email,
         password,
@@ -79,7 +83,7 @@ module.exports = {
         role,
       });
 
-      const templatePath = path.resolve(__dirname, '../emailTemplates/welcome.html');
+      const templatePath = path.resolve(__dirname, '../emailTemplates/correo.html');
       const templateContent = fs.readFileSync(templatePath, 'utf8');
 
       const correoHTML = templateContent.replace('{{fullname}}', name+' '+surname);
@@ -94,7 +98,8 @@ module.exports = {
       
       return ctx.send({'user':user,'success':true});
     } catch (error) {
-      console.error('Error al enviar el correo electrónico:', error);
+      console.error(error);
+      return ctx.badRequest('Error: '+error);
     }
   }
 };

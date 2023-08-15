@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>One column</title>
+	<style>
+        body {
+            overflow-x: hidden;
+        }
+
+		.mail-main-container h1,
+		.mail-main-container h2,
+		.mail-main-container h3,
+		.mail-main-container h4,
+		.mail-main-container h5,
+		.mail-main-container h6{
+			font-weight: 300;
+			margin: 0px 0 0.5em 0;
+			color: #00467e;
+		}
+		.mail-main-container h1{
+			font-size: 22pt;
+			line-height: 1em;
+		}
+		.mail-main-container h2{
+			font-size: 16pt;
+			line-height: 1em;
+            font-weight: bold;
+            color: rgb(10, 4, 92);
+		}
+		.mail-main-container h3{
+			font-size: 13pt;
+			line-height: 1em;
+		}
+		.mail-main-container h4{
+			font-size: 12pt;
+			line-height: 1.1em;
+		}
+		.mail-main-container h5{
+			font-size: 11pt;
+		    line-height: 1.2em;
+		}
+		.mail-main-container h6{
+			font-size: 10pt;
+			line-height: 1em;
+		}
+		.mail-main-container a{
+			color: #337ab7;
+			font-weight: bold;
+			text-decoration: none;
+			cursor: pointer;
+            background-color: rgb(12, 57, 252);
+            padding: 15px 30px;
+            border-radius: 50px;
+            color: #fff;
+		}
+		.mail-main-container hr{
+			height: 3px;
+			margin: 20px 0px 20px 0px;
+			width: 100%;
+			border: none;
+			background: #00467e;
+		}
+		.mail-main-container ul{
+			margin-top: 1em;
+			margin-bottom: 1em;
+		}
+		.mail-main-container p{
+			margin: 0em 0em 1em 0em;
+			padding: 0;
+			font-size: 10pt;
+			line-height: 1.5em;
+			font-weight: 300;
+			font-family: helvetica;
+            color: rgb(10, 4, 92);
+		}
+		.mail-main-container ul{
+			font-size: 10pt;
+			line-height: 1.5em;
+			font-weight: 300;
+			font-family: helvetica;
+		}
+		.mail-main-container h1.title img{
+			max-width:100%;
+            height:auto;
+		}
+		.mail-main-container .center{
+			text-align: center;
+		}
+		.mail-main-container .mail-body img{
+			width: 100%;
+		}
+		.mail-main-container{
+			padding: 20px;
+			max-width: 100%;
+			height: 100%;
+			background-color: #fff;
+			color: #505050;
+			text-align: left;
+			font-family: helvetica;
+		}
+		.mail-main-container .mail-container{
+			max-width: 350px;
+			background-image: url('assets/images/slide-pepsico-r.jpg');
+			padding: 20px;
+			height: auto;
+			margin: 0px auto 0px auto;
+			box-shadow: 0 0 20px #e2e2e2;
+			border-radius: 5px;
+		}
+		.mail-main-container .mail-body{
+			min-height:450px;
+		}
+		.mail-main-container .mail-footer{
+			font-size: 9pt;
+			line-height: 1.5em;
+			font-weight: 300;
+		}
+		.mail-main-container table {
+			border-collapse: separate;
+			border-spacing: 0px 20px;
+		}
+		.mail-main-container table td{
+			width: 50%;
+			vertical-align: top;
+		}
+		.mail-main-container table tr td.first-child{
+			padding-right: 10px;
+		}
+		.mail-main-container table tr td.last-child {
+			padding-left: 10px;
+		}
+        .mail-body {
+            text-align: center;
+        }
+	</style>
+</head>
+<body>
+    <div class="mail-main-container">
+        <div class="mail-container">
+            <h1 class="title center"><img src="assets/images/logo-premios-r.png" /></h1>
+        
+            <div class="mail-body">
+                <h2>¡Gracias {{fullname}} por ser parte de este gran evento Premios PepsiCo 2023!<br /><br /></h2>
+                <p><span style="font-size: 14pt;"><strong>Tu registro ha sido exitoso.</strong><br /><br /></span></p>
+                <p><span style="font-size: 14pt;">Te agradecemos por unirte con nosotros el<br>
+                    <strong>30 de agosto a las 9:00 a.m. CDT.</strong></span></p>
+                <p><span style="font-size: 14pt;">El día del evento podrás hacer<br>
+                <strong>login con tu correo</strong> de PepsiCo.</span></p>
+
+                <p><span style="font-size: 14pt;">¡Recibe un fuerte abrazo!</span></p>
+
+                <h2 style="margin-bottom: 30px;">¡Nos vemos pronto!</h2>
+
+                <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20230815T120000Z%0ADTEND:20230815T130000Z%0ASUMMARY:Mi Evento%0ADESCRIPTION:Descripción del evento%0ALOCATION:Lugar%0AEND:VEVENT%0AEND:VCALENDAR" download="evento.ics">Agregar al calendario</a>
+            </div>
+    <!-- <div class="mail-footer">Playeras Mark Athletic {_date}</div> -->
+        </div>
+    </div>
+</body>
