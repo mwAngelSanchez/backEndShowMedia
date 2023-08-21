@@ -101,6 +101,29 @@ module.exports = {
       console.error(error);
       return ctx.badRequest('Error: '+error);
     }
+  },
+  async passwordRecover(ctx){
+    const { email, gpid ,newPassword } = ctx.request.body;
+
+    try {
+      const entry = await strapi.db.query('plugin::users-permissions.user').findOne({
+        where: { email: email}
+      });
+
+      if (entry && entry.gpid === gpid){
+        const hashedPassword = bcrypt.hashSync(newPassword, 10);
+        
+        const updateEntry = strapi.db.query('plugin::users-permissions.user').update({
+          where:{id:entry.id},
+          data:{password: hashedPassword}
+        });
+        
+        return ctx.send({'success':true,user:updateEntry});
+        
+      } else return ctx.send({message: `El correo o el GPID no corresponden con los registros`,success: false});
+    } catch (error) {
+      return ctx.badRequest('Error al actualizar el valor: '+error);
+    }
   }
 };
 
