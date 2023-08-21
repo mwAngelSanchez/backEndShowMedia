@@ -17,7 +17,7 @@
     "@strapi/strapi": "4.11.7",
     "bcrypt": "^5.1.0",
     "cloudinary": "^1.39.0",
-    "pg": "8.8.0"
+    "pg": "8.11.3"
   },
   "author": {
     "name": "A Strapi developer"
