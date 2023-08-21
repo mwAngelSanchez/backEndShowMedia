@@ -16,7 +16,7 @@
     "@strapi/provider-email-sendgrid": "^4.12.5",
     "@strapi/strapi": "4.11.7",
     "bcrypt": "^5.1.0",
-    "cloudinary": "^1.39.0",
+    "cloudinary": "^1.40.0",
     "pg": "8.8.0"
   },
   "author": {
