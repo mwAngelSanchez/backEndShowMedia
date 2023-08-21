@@ -14,6 +14,11 @@ module.exports = {
       method: 'POST',
       path: '/user/create',
       handler: 'user.createUser',
+     },
+     {
+      method: 'POST',
+      path: '/user/passwordRecover',
+      handler: 'user.passwordRecover',
      }
   ],
 };
