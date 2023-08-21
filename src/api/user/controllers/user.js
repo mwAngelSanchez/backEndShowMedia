@@ -88,12 +88,12 @@ module.exports = {
 
       const correoHTML = templateContent.replace('{{fullname}}', name+' '+surname);
 
-      await transport.sendMail({
-        from:'livestreamfront@gmail.com',
-        to:email,
-        subject:'Confirmacion de usuario',
-        text: `Id de usuario: ${user.id}`,
-        html:correoHTML
+      await strapi.plugins['email'].services.email.send({
+        to: email,
+        from: 'registro@premiospepsico2023.com', 
+        replyTo: 'registro@premiospepsico2023.com',
+        subject: '¡Registro exitoso a Premios Pepsico 2023!',
+        html: correoHTML,
       });
       
       return ctx.send({'user':user,'success':true});
