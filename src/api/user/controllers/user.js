@@ -56,21 +56,17 @@ module.exports = {
       return ctx.badRequest('Error: '+err);
     }
   },
-  async createUser(ctx){
-
-    let { username, email, password,confirmed,blocked,logged,role,gpid,surname } = ctx.request.body;
-
+  async createUser(ctx) {
+    let { username, email, password, confirmed, blocked, logged, role, gpid, surname } = ctx.request.body;
+  
     // Enviar el correo electrónico con el ID del usuario
-
+  
     const name = username;
-
-    const randomNumber = Math.round(Math.random()*5000);
-
-    username = name+surname+randomNumber;
-
-
+    username = email;
+  
+    let user;
     try {
-      const user = await strapi.plugins['users-permissions'].services.user.add({
+      user = await strapi.plugins['users-permissions'].services.user.add({
         username,
         name,
         surname,
@@ -82,25 +78,29 @@ module.exports = {
         logged,
         role,
       });
-
+    } catch (error) {
+      return ctx.badRequest('Error: ' + error);
+    }
+  
+    // Envío de correo
+    try {
       const templatePath = path.resolve(__dirname, '../emailTemplates/correo.html');
       const templateContent = fs.readFileSync(templatePath, 'utf8');
-
-      const correoHTML = templateContent.replace('{{fullname}}', name+' '+surname);
-
+  
+      const correoHTML = templateContent.replace('{{fullname}}', name + ' ' + surname);
+  
       await strapi.plugins['email'].services.email.send({
         to: email,
-        from: 'registro@premiospepsico2023.com', 
+        from: 'registro@premiospepsico2023.com',
         replyTo: 'registro@premiospepsico2023.com',
         subject: '¡Registro exitoso a Premios Pepsico 2023!',
         html: correoHTML,
       });
-      
-      return ctx.send({'user':user,'success':true});
     } catch (error) {
       console.error(error);
-      return ctx.badRequest('Error: '+error);
     }
+  
+    return ctx.send({ 'user': user, 'success': true });
   },
   async passwordRecover(ctx){
     const { email, gpid ,newPassword } = ctx.request.body;
